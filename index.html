@@ -7,11 +7,51 @@
   <meta name="description" content="SiHD - El partner digital para pequeñas empresas. Transformamos la tecnología de tu negocio para que puedas centrarte en tus clientes.">
   <meta name="author" content="SiHD">
   <title>SiHD &mdash; El partner digital para pequeñas empresas</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="bundled/font-awesome/css/font-awesome.min.css">
   <style>
+    @font-face { font-family:'Open Sans'; font-style:normal; font-weight:100 900; font-stretch:100%; src:url('bundled/fonts/opensans-latin.woff2') format('woff2'); }
+    @font-face { font-family:'Open Sans'; font-style:italic; font-weight:100 900; font-stretch:100%; src:url('bundled/fonts/opensans-latin-italic.woff2') format('woff2'); }
+    @font-face { font-family:'Merriweather'; font-style:normal; font-weight:100 900; font-stretch:100%; src:url('bundled/fonts/merriweather-latin.woff2') format('woff2'); }
+    @font-face { font-family:'Merriweather'; font-style:italic; font-weight:100 900; font-stretch:100%; src:url('bundled/fonts/merriweather-latin-italic.woff2') format('woff2'); }
+
+    *, *::before, *::after { box-sizing:border-box; }
+    body { margin:0; }
+
+    .container { padding-right:15px; padding-left:15px; margin-right:auto; margin-left:auto; }
+    .row { margin-right:-15px; margin-left:-15px; }
+    .row::after { content:''; display:table; clear:both; }
+    [class^="col-"], [class*=" col-"] { float:left; position:relative; min-height:1px; padding-right:15px; padding-left:15px; }
+    .col-xs-6 { width:50%; } .col-xs-12 { width:100%; }
+    @media (min-width:768px) { .container { width:750px; } .col-sm-4 { width:33.33333333%; } .col-sm-6 { width:50%; } .col-sm-12 { width:100%; } }
+    @media (min-width:992px) { .container { width:970px; } .col-md-3 { width:25%; } .col-md-4 { width:33.33333333%; } .col-md-6 { width:50%; } .col-md-12 { width:100%; } }
+    @media (min-width:1200px) { .container { width:1170px; } .col-lg-2 { width:16.66666667%; } .col-lg-3 { width:25%; } .col-lg-4 { width:33.33333333%; } .col-lg-8 { width:66.66666667%; } .col-lg-12 { width:100%; } .col-lg-offset-2 { margin-left:16.66666667%; } }
+
+    .navbar { position:relative; min-height:50px; margin-bottom:20px; border:1px solid transparent; }
+    .navbar-fixed-top { position:fixed; top:0; right:0; left:0; z-index:1030; }
+    .navbar-header { float:left; }
+    .navbar-brand { float:left; height:50px; padding:15px 15px; font-size:18px; line-height:20px; }
+    .navbar-toggle { position:relative; float:right; padding:9px 10px; margin-top:8px; margin-right:15px; margin-bottom:8px; background:transparent; background-image:none; border:1px solid transparent; border-radius:4px; }
+    .navbar-toggle .icon-bar + .icon-bar { margin-top:4px; }
+    .navbar-collapse { padding-right:15px; padding-left:15px; overflow-x:visible; border-top:1px solid transparent; box-shadow:inset 0 1px 0 rgba(255,255,255,.1); }
+    .collapse { display:none; }
+    .collapse.in { display:block; }
+    .nav { padding-left:0; margin-bottom:0; list-style:none; }
+    .nav > li { position:relative; display:block; }
+    .nav > li > a { position:relative; display:block; padding:10px 15px; }
+    .navbar-nav { margin:0 -15px; }
+    .navbar-nav > li > a { padding-top:10px; padding-bottom:10px; line-height:20px; }
+    .navbar-right { float:right !important; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+    .icon-bar { display:block; width:22px; height:2px; border-radius:1px; background:#888; }
+    @media (min-width:768px) { .navbar-collapse.collapse { display:block !important; } .navbar-toggle { display:none; } .navbar-nav { float:left; margin:0; } .navbar-nav > li { float:left; } .navbar-nav > li > a { padding-top:15px; padding-bottom:15px; } .navbar-right { float:right !important; } .navbar-header { width:auto; } }
+
+    .btn { display:inline-block; padding:6px 12px; margin-bottom:0; font-size:14px; font-weight:400; line-height:1.42857143; text-align:center; white-space:nowrap; vertical-align:middle; cursor:pointer; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; background-image:none; border:1px solid transparent; border-radius:4px; }
+    .btn-default { color:#333; background:#fff; border-color:#ccc; }
+    .btn-primary { color:#fff; background:#337ab7; border-color:#2e6da4; }
+
+    .text-center { text-align:center; }
+    .text-muted { color:#777; }
+
     html, body { height: 100%; width: 100%; }
     body { font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif; }
     hr { border-color: #F05F40; border-width: 3px; max-width: 50px; }
@@ -96,7 +136,7 @@
       background-size: cover;
       -o-background-size: cover;
       background-position: center;
-      background-image: url('assets/header.jpg');
+      background-image: url('assets/header.png');
       text-align: center;
       color: white;
     }
@@ -162,10 +202,10 @@
       }
     }
     .section-heading { margin-top: 0; }
-    .service-box { max-width: 400px; margin: 50px auto 0; }
-    @media (min-width: 992px) { .service-box { margin: 20px auto 0; } }
-    .service-box p { margin-bottom: 0; font-size: 14px; }
-    .service-box h3 { font-size: 18px; font-weight: 700; }
+    .modulo-box { padding: 30px 15px; }
+    .modulo-box h3 { font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-top: 15px; margin-bottom: 10px; }
+    .modulo-box p { margin-bottom: 0; font-size: 14px; }
+    .modulo-box .fa { width: 1.28571429em; text-align: center; margin-bottom: 10px; }
     .portfolio-box {
       position: relative;
       display: block;
@@ -354,50 +394,36 @@
           <hr class="primary">
         </div>
       </div>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-md-6 text-center">
-          <div class="service-box wow" data-wow-delay="0s">
-            <i class="fa fa-4x fa-robot text-primary"></i>
-            <h3>Inteligencia Artificial</h3>
-            <p class="text-muted">Agente IA para WhatsApp, atenci&oacute;n al cliente 24/7, FAQ inteligentes y captaci&oacute;n de leads automatizada.</p>
-          </div>
+      <div class="row" style="margin-top:40px;">
+        <div class="col-md-4 col-sm-6 text-center modulo-box wow" data-wow-delay="0s">
+          <i class="fa fa-4x fa-code text-primary"></i>
+          <h3>Inteligencia Artificial</h3>
+          <p class="text-muted">Agente IA para WhatsApp, atenci&oacute;n al cliente 24/7, FAQ inteligentes y captaci&oacute;n de leads automatizada.</p>
         </div>
-        <div class="col-lg-4 col-md-6 text-center">
-          <div class="service-box wow" data-wow-delay=".1s">
-            <i class="fa fa-4x fa-globe text-primary"></i>
-            <h3>Presencia Digital</h3>
-            <p class="text-muted">P&aacute;gina web, landing pages, cartas digitales y formularios adaptados a tu negocio.</p>
-          </div>
+        <div class="col-md-4 col-sm-6 text-center modulo-box wow" data-wow-delay=".1s">
+          <i class="fa fa-4x fa-globe text-primary"></i>
+          <h3>Presencia Digital</h3>
+          <p class="text-muted">P&aacute;gina web, landing pages, cartas digitales y formularios adaptados a tu negocio.</p>
         </div>
-        <div class="col-lg-4 col-md-6 text-center">
-          <div class="service-box wow" data-wow-delay=".2s">
-            <i class="fa fa-4x fa-google text-primary"></i>
-            <h3>Google Business</h3>
-            <p class="text-muted">Optimizaci&oacute;n de perfil, SEO local, gesti&oacute;n de rese&ntilde;as y posicionamiento en Google Maps.</p>
-          </div>
+        <div class="col-md-4 col-sm-6 text-center modulo-box wow" data-wow-delay=".2s">
+          <i class="fa fa-4x fa-google text-primary"></i>
+          <h3>Google Business</h3>
+          <p class="text-muted">Optimizaci&oacute;n de perfil, SEO local, gesti&oacute;n de rese&ntilde;as y posicionamiento en Google Maps.</p>
         </div>
-        <div class="col-lg-4 col-md-6 text-center">
-          <div class="service-box wow" data-wow-delay=".3s">
-            <i class="fa fa-4x fa-bullhorn text-primary"></i>
-            <h3>Marketing Digital</h3>
-            <p class="text-muted">Redes sociales, campa&ntilde;as de publicidad, email marketing y estrategia de captaci&oacute;n.</p>
-          </div>
+        <div class="col-md-4 col-sm-6 text-center modulo-box wow" data-wow-delay=".3s">
+          <i class="fa fa-4x fa-bullhorn text-primary"></i>
+          <h3>Marketing Digital</h3>
+          <p class="text-muted">Redes sociales, campa&ntilde;as de publicidad, email marketing y estrategia de captaci&oacute;n.</p>
         </div>
-        <div class="col-lg-4 col-md-6 text-center">
-          <div class="service-box wow" data-wow-delay=".4s">
-            <i class="fa fa-4x fa-camera text-primary"></i>
-            <h3>Contenido Visual</h3>
-            <p class="text-muted">Fotograf&iacute;a profesional, v&iacute;deo, tours virtuales 360&deg; y contenido para Google Maps.</p>
-          </div>
+        <div class="col-md-4 col-sm-6 text-center modulo-box wow" data-wow-delay=".4s">
+          <i class="fa fa-4x fa-camera text-primary"></i>
+          <h3>Contenido Visual</h3>
+          <p class="text-muted">Fotograf&iacute;a profesional, v&iacute;deo, tours virtuales 360&deg; y contenido para Google Maps.</p>
         </div>
-        <div class="col-lg-4 col-md-6 text-center">
-          <div class="service-box wow" data-wow-delay=".5s">
-            <i class="fa fa-4x fa-cogs text-primary"></i>
-            <h3>Automatizaci&oacute;n</h3>
-            <p class="text-muted">Integraci&oacute;n entre plataformas, flujos de trabajo, APIs y automatizaci&oacute;n de procesos.</p>
-          </div>
+        <div class="col-md-4 col-sm-6 text-center modulo-box wow" data-wow-delay=".5s">
+          <i class="fa fa-4x fa-cogs text-primary"></i>
+          <h3>Automatizaci&oacute;n</h3>
+          <p class="text-muted">Integraci&oacute;n entre plataformas, flujos de trabajo, APIs y automatizaci&oacute;n de procesos.</p>
         </div>
       </div>
     </div>

@@ -25,6 +25,7 @@ jobs:
           mkdir _public
           cp index.html _public/index.html
           cp -r assets _public/assets
+          cp -r bundled _public/bundled
 
       - uses: actions/upload-pages-artifact@v3
         with:
