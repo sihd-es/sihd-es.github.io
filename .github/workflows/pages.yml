@@ -24,6 +24,7 @@ jobs:
       - run: |
           mkdir _public
           cp index.html _public/index.html
+          cp -r assets _public/assets
 
       - uses: actions/upload-pages-artifact@v3
         with:
