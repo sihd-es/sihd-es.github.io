@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="SiHD - El partner digital para pequeñas empresas. Transformamos la tecnología de tu negocio para que puedas centrarte en tus clientes.">
+  <meta name="author" content="SiHD">
+  <title>SiHD &mdash; El partner digital para pequeñas empresas</title>
+  <link rel="stylesheet" href="bundled/font-awesome/css/font-awesome.min.css">
+  <style>
+    @font-face { font-family:'Open Sans'; font-style:normal; font-weight:100 900; font-stretch:100%; src:url('bundled/fonts/opensans-latin.woff2') format('woff2'); }
+    @font-face { font-family:'Open Sans'; font-style:italic; font-weight:100 900; font-stretch:100%; src:url('bundled/fonts/opensans-latin-italic.woff2') format('woff2'); }
+    @font-face { font-family:'Merriweather'; font-style:normal; font-weight:100 900; font-stretch:100%; src:url('bundled/fonts/merriweather-latin.woff2') format('woff2'); }
+    @font-face { font-family:'Merriweather'; font-style:italic; font-weight:100 900; font-stretch:100%; src:url('bundled/fonts/merriweather-latin-italic.woff2') format('woff2'); }
+
+    *, *::before, *::after { box-sizing:border-box; }
+    body { margin:0; }
+
+    .container { padding-right:15px; padding-left:15px; margin-right:auto; margin-left:auto; }
+    .row { margin-right:-15px; margin-left:-15px; }
+    .row::after { content:''; display:table; clear:both; }
+    [class^="col-"], [class*=" col-"] { float:left; position:relative; min-height:1px; padding-right:15px; padding-left:15px; }
+    .col-xs-6 { width:50%; } .col-xs-12 { width:100%; }
+    @media (min-width:768px) { .container { width:750px; } .col-sm-4 { width:33.33333333%; } .col-sm-6 { width:50%; } .col-sm-12 { width:100%; } }
+    @media (min-width:992px) { .container { width:970px; } .col-md-3 { width:25%; } .col-md-4 { width:33.33333333%; } .col-md-6 { width:50%; } .col-md-12 { width:100%; } }
+    @media (min-width:1200px) { .container { width:1170px; } .col-lg-2 { width:16.66666667%; } .col-lg-3 { width:25%; } .col-lg-4 { width:33.33333333%; } .col-lg-8 { width:66.66666667%; } .col-lg-12 { width:100%; } .col-lg-offset-2 { margin-left:16.66666667%; } }
+
+    .navbar { position:relative; min-height:50px; margin-bottom:20px; border:1px solid transparent; }
+    .navbar-fixed-top { position:fixed; top:0; right:0; left:0; z-index:1030; }
+    .navbar-header { float:left; }
+    .navbar-brand { float:left; height:50px; padding:15px 15px; font-size:18px; line-height:20px; }
+    .navbar-toggle { position:relative; float:right; padding:9px 10px; margin-top:8px; margin-right:15px; margin-bottom:8px; background:transparent; background-image:none; border:1px solid transparent; border-radius:4px; }
+    .navbar-toggle .icon-bar + .icon-bar { margin-top:4px; }
+    .navbar-collapse { padding-right:15px; padding-left:15px; overflow-x:visible; border-top:1px solid transparent; box-shadow:inset 0 1px 0 rgba(255,255,255,.1); }
+    .collapse { display:none; }
+    .collapse.in { display:block; }
+    .nav { padding-left:0; margin-bottom:0; list-style:none; }
+    .nav > li { position:relative; display:block; }
+    .nav > li > a { position:relative; display:block; padding:10px 15px; }
+    .navbar-nav { margin:0 -15px; }
+    .navbar-nav > li > a { padding-top:10px; padding-bottom:10px; line-height:20px; }
+    .navbar-right { float:right !important; }
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+    .icon-bar { display:block; width:22px; height:2px; border-radius:1px; background:#888; }
+    @media (min-width:768px) { .navbar-collapse.collapse { display:block !important; } .navbar-toggle { display:none; } .navbar-nav { float:left; margin:0; } .navbar-nav > li { float:left; } .navbar-nav > li > a { padding-top:15px; padding-bottom:15px; } .navbar-right { float:right !important; } .navbar-header { width:auto; } }
+
+    .btn { display:inline-block; padding:6px 12px; margin-bottom:0; font-size:14px; font-weight:400; line-height:1.42857143; text-align:center; white-space:nowrap; vertical-align:middle; cursor:pointer; -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; background-image:none; border:1px solid transparent; border-radius:4px; }
+    .btn-default { color:#333; background:#fff; border-color:#ccc; }
+    .btn-primary { color:#fff; background:#337ab7; border-color:#2e6da4; }
+
+    .text-center { text-align:center; }
+    .text-muted { color:#777; }
+
+    html, body { height: 100%; width: 100%; }
+    body { font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif; }
+    hr { border-color: #F05F40; border-width: 3px; max-width: 50px; }
+    hr.light { border-color: white; }
+    a { -webkit-transition: all 0.35s; -moz-transition: all 0.35s; transition: all 0.35s; color: #F05F40; }
+    a:hover, a:focus { color: #eb3812; text-decoration: none; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; }
+    p { font-size: 16px; line-height: 1.5; margin-bottom: 20px; }
+    .bg-primary { background-color: #F05F40; }
+    .bg-dark { background-color: #222; color: white; }
+    .text-faded { color: rgba(255,255,255,.7); }
+    section { padding: 100px 0; }
+    aside { padding: 50px 0; }
+    .no-padding { padding: 0; }
+    .navbar-default {
+      background-color: white;
+      border-color: rgba(34,34,34,.5);
+      font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+      -webkit-transition: all 0.35s;
+      -moz-transition: all 0.35s;
+      transition: all 0.35s;
+    }
+    .navbar-default .navbar-header .navbar-brand {
+      color: #F05F40;
+      font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 22px;
+      letter-spacing: 2px;
+    }
+    .navbar-default .navbar-header .navbar-brand:hover,
+    .navbar-default .navbar-header .navbar-brand:focus { color: #eb3812; }
+    .navbar-default .nav > li > a,
+    .navbar-default .nav > li > a:focus {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 12px;
+      color: #222;
+    }
+    .navbar-default .nav > li > a:hover { color: #F05F40; }
+    .navbar-default .nav > li.active > a,
+    .navbar-default .nav > li.active > a:focus {
+      color: #F05F40 !important;
+      background-color: transparent;
+    }
+    .navbar-default .nav > li.active > a:hover { background-color: transparent; }
+    @media (min-width: 768px) {
+      .navbar-default {
+        background-color: transparent;
+        border-color: rgba(255,255,255,.3);
+      }
+      .navbar-default .navbar-header .navbar-brand {
+        color: rgba(255,255,255,.8);
+      }
+      .navbar-default .navbar-header .navbar-brand:hover,
+      .navbar-default .navbar-header .navbar-brand:focus { color: white; }
+      .navbar-default .nav > li > a,
+      .navbar-default .nav > li > a:focus {
+        color: rgba(255,255,255,.8);
+      }
+      .navbar-default .nav > li > a:hover { color: white; }
+      .navbar-default.navbar-shrink {
+        background-color: white;
+        border-color: rgba(34,34,34,.5);
+      }
+      .navbar-default.navbar-shrink .navbar-header .navbar-brand {
+        color: #F05F40;
+        font-size: 18px;
+      }
+      .navbar-default.navbar-shrink .navbar-header .navbar-brand:hover,
+      .navbar-default.navbar-shrink .navbar-header .navbar-brand:focus { color: #eb3812; }
+      .navbar-default.navbar-shrink .nav > li > a,
+      .navbar-default.navbar-shrink .nav > li > a:focus { color: #222; }
+      .navbar-default.navbar-shrink .nav > li > a:hover { color: #F05F40; }
+    }
+    header {
+      position: relative;
+      width: 100%;
+      min-height: auto;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      background-size: cover;
+      -o-background-size: cover;
+      background-position: center;
+      background-image: url('assets/header.png');
+      text-align: center;
+      color: white;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,.45);
+    }
+    header .header-content {
+      position: relative;
+      text-align: center;
+      padding: 100px 15px 100px;
+      width: 100%;
+      z-index: 1;
+    }
+    header .header-content .header-content-inner h1 {
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 32px;
+      letter-spacing: 2px;
+    }
+    header .header-content .header-content-inner .sub {
+      font-size: 20px;
+      font-weight: 300;
+      color: rgba(255,255,255,.85);
+      margin-top: 15px;
+      margin-bottom: 30px;
+      font-family: 'Merriweather', serif;
+      font-style: italic;
+    }
+    header .header-content .header-content-inner hr { margin: 30px auto; }
+    header .header-content .header-content-inner p {
+      font-weight: 300;
+      color: rgba(255,255,255,.75);
+      font-size: 16px;
+      margin-bottom: 50px;
+    }
+    @media (min-width: 768px) {
+      header { min-height: 100%; }
+      header .header-content {
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        padding: 0 50px;
+      }
+      header .header-content .header-content-inner {
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      header .header-content .header-content-inner h1 { font-size: 52px; }
+      header .header-content .header-content-inner .sub { font-size: 24px; }
+      header .header-content .header-content-inner p {
+        font-size: 17px;
+        max-width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    .section-heading { margin-top: 0; }
+    .modulo-box { padding: 30px 15px; }
+    .modulo-box h3 { font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-top: 15px; margin-bottom: 10px; }
+    .modulo-box p { margin-bottom: 0; font-size: 14px; }
+    .modulo-box .fa { width: 1.28571429em; text-align: center; margin-bottom: 10px; }
+    .portfolio-box {
+      position: relative;
+      display: block;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .portfolio-box .portfolio-box-caption {
+      color: white;
+      opacity: 0;
+      display: block;
+      background: rgba(240,95,64,.9);
+      position: absolute;
+      bottom: 0;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      -webkit-transition: all 0.35s;
+      -moz-transition: all 0.35s;
+      transition: all 0.35s;
+    }
+    .portfolio-box .portfolio-box-caption .portfolio-box-caption-content {
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category,
+    .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name {
+      font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+      padding: 0 15px;
+    }
+    .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category {
+      text-transform: uppercase;
+      font-weight: 600;
+      font-size: 13px;
+    }
+    .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name { font-size: 16px; }
+    .portfolio-box:hover .portfolio-box-caption { opacity: 1; }
+    @media (min-width: 768px) {
+      .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-category { font-size: 15px; }
+      .portfolio-box .portfolio-box-caption .portfolio-box-caption-content .project-name { font-size: 20px; }
+    }
+    .call-to-action h2 { margin: 0 auto 20px; font-size: 28px; }
+    .text-primary { color: #F05F40; }
+    .no-gutter > [class*='col-'] { padding-right: 0; padding-left: 0; }
+    .btn-default {
+      color: #222; background-color: white; border-color: white;
+      -webkit-transition: all 0.35s; -moz-transition: all 0.35s; transition: all 0.35s;
+    }
+    .btn-default:hover, .btn-default:focus, .btn-default.focus,
+    .btn-default:active, .btn-default.active {
+      color: #222; background-color: #f2f2f2; border-color: #e6e6e6;
+    }
+    .btn-primary {
+      color: white; background-color: #F05F40; border-color: #F05F40;
+      -webkit-transition: all 0.35s; -moz-transition: all 0.35s; transition: all 0.35s;
+    }
+    .btn-primary:hover, .btn-primary:focus, .btn-primary.focus,
+    .btn-primary:active, .btn-primary.active {
+      color: white; background-color: #ee4b28; border-color: #ed431f;
+    }
+    .btn-outline {
+      color: white;
+      background: transparent;
+      border: 2px solid white;
+      -webkit-transition: all 0.35s;
+      -moz-transition: all 0.35s;
+      transition: all 0.35s;
+    }
+    .btn-outline:hover, .btn-outline:focus {
+      color: #222;
+      background: white;
+      border-color: white;
+    }
+    .btn {
+      font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+      border: none; border-radius: 300px; font-weight: 700; text-transform: uppercase;
+    }
+    .btn-xl { padding: 15px 30px; }
+    #contact .fa { color: #222; font-size: 3em; }
+    #contact a:hover { text-decoration: none; }
+    ::-moz-selection { color: white; text-shadow: none; background: #F05F40; }
+    ::selection { color: white; text-shadow: none; background: #F05F40; }
+    body { -webkit-tap-highlight-color: #222; }
+    .sector-icon { font-size: 3em; color: #F05F40; margin-bottom: 10px; }
+    .sector-box { padding: 30px 15px; }
+    .sector-box h4 { font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; }
+
+    @keyframes bounceIn {
+      from, 20%, 40%, 60%, 80%, to { animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+      0% { opacity: 0; transform: scale3d(.3, .3, .3); }
+      20% { transform: scale3d(1.1, 1.1, 1.1); }
+      40% { transform: scale3d(.9, .9, .9); }
+      60% { opacity: 1; transform: scale3d(1.03, 1.03, 1.03); }
+      80% { transform: scale3d(.97, .97, .97); }
+      to { opacity: 1; transform: scale3d(1, 1, 1); }
+    }
+    .wow { visibility: hidden; }
+    .wow.animated { visibility: visible; }
+    .bounceIn { animation-duration: 1s; animation-fill-mode: both; animation-name: bounceIn; }
+  </style>
+</head>
+<body id="page-top">
+  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false" id="nav-toggle">
+          <span class="sr-only">Men&uacute;</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#page-top">SiHD</a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#que-es">Qu&eacute; somos</a></li>
+          <li><a href="#modulos">M&oacute;dulos</a></li>
+          <li><a href="#sectores">Sectores</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="header-content">
+      <div class="header-content-inner">
+        <h1>Tu partner digital</h1>
+        <p class="sub">Nos convertimos en el departamento digital de tu empresa</p>
+        <hr>
+        <p>Olv&iacute;date de gestionar m&uacute;ltiples proveedores y herramientas.&nbsp; Nosotros nos encargamos de toda tu tecnolog&iacute;a para que t&uacute; puedas centrarte en tus clientes.</p>
+        <a href="#que-es" class="btn btn-primary btn-xl">Con&oacute;cenos</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="bg-primary" id="que-es">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+          <h2 class="section-heading">El departamento digital de tu empresa</h2>
+          <hr class="light">
+          <p class="text-faded" style="font-size:18px;">No somos una agencia de marketing, ni una empresa de desarrollo web, ni una consultora tecnol&oacute;gica.&nbsp; Integramos todo eso en un &uacute;nico partner para que tu negocio tenga el mismo nivel tecnol&oacute;gico que una gran empresa, sin necesidad de un equipo interno.</p>
+        </div>
+      </div>
+      <div class="row" style="margin-top:50px;">
+        <div class="col-md-3 col-sm-6 text-center">
+          <div class="wow" data-wow-delay="0s">
+            <i class="fa fa-4x fa-cubes text-faded"></i>
+            <h3 style="color:white;font-weight:700;font-size:16px;text-transform:uppercase;margin-top:15px;">Modular</h3>
+            <p class="text-faded">Cada negocio contrata solo lo que necesita</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 text-center">
+          <div class="wow" data-wow-delay=".1s">
+            <i class="fa fa-4x fa-rocket text-faded"></i>
+            <h3 style="color:white;font-weight:700;font-size:16px;text-transform:uppercase;margin-top:15px;">Escalable</h3>
+            <p class="text-faded">La soluci&oacute;n crece contigo</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 text-center">
+          <div class="wow" data-wow-delay=".2s">
+            <i class="fa fa-4x fa-magic text-faded"></i>
+            <h3 style="color:white;font-weight:700;font-size:16px;text-transform:uppercase;margin-top:15px;">Sencillo</h3>
+            <p class="text-faded">Sin complejidad t&eacute;cnica para ti</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 text-center">
+          <div class="wow" data-wow-delay=".3s">
+            <i class="fa fa-4x fa-lightbulb-o text-faded"></i>
+            <h3 style="color:white;font-weight:700;font-size:16px;text-transform:uppercase;margin-top:15px;">Innovador</h3>
+            <p class="text-faded">IA y automatizaci&oacute;n &uacute;til y pr&aacute;ctica</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="modulos">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading">Soluciones modulares</h2>
+          <hr class="primary">
+        </div>
+      </div>
+      <div class="row" style="margin-top:40px;">
+        <div class="col-md-4 col-sm-6 text-center modulo-box wow" data-wow-delay="0s">
+          <i class="fa fa-4x fa-code text-primary"></i>
+          <h3>Inteligencia Artificial</h3>
+          <p class="text-muted">Agente IA para WhatsApp, atenci&oacute;n al cliente 24/7, FAQ inteligentes y captaci&oacute;n de leads automatizada.</p>
+        </div>
+        <div class="col-md-4 col-sm-6 text-center modulo-box wow" data-wow-delay=".1s">
+          <i class="fa fa-4x fa-globe text-primary"></i>
+          <h3>Presencia Digital</h3>
+          <p class="text-muted">P&aacute;gina web, landing pages, cartas digitales y formularios adaptados a tu negocio.</p>
+        </div>
+        <div class="col-md-4 col-sm-6 text-center modulo-box wow" data-wow-delay=".2s">
+          <i class="fa fa-4x fa-google text-primary"></i>
+          <h3>Google Business</h3>
+          <p class="text-muted">Optimizaci&oacute;n de perfil, SEO local, gesti&oacute;n de rese&ntilde;as y posicionamiento en Google Maps.</p>
+        </div>
+        <div class="col-md-4 col-sm-6 text-center modulo-box wow" data-wow-delay=".3s">
+          <i class="fa fa-4x fa-bullhorn text-primary"></i>
+          <h3>Marketing Digital</h3>
+          <p class="text-muted">Redes sociales, campa&ntilde;as de publicidad, email marketing y estrategia de captaci&oacute;n.</p>
+        </div>
+        <div class="col-md-4 col-sm-6 text-center modulo-box wow" data-wow-delay=".4s">
+          <i class="fa fa-4x fa-camera text-primary"></i>
+          <h3>Contenido Visual</h3>
+          <p class="text-muted">Fotograf&iacute;a profesional, v&iacute;deo, tours virtuales 360&deg; y contenido para Google Maps.</p>
+        </div>
+        <div class="col-md-4 col-sm-6 text-center modulo-box wow" data-wow-delay=".5s">
+          <i class="fa fa-4x fa-cogs text-primary"></i>
+          <h3>Automatizaci&oacute;n</h3>
+          <p class="text-muted">Integraci&oacute;n entre plataformas, flujos de trabajo, APIs y automatizaci&oacute;n de procesos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-dark" id="sectores">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <h2 class="section-heading">Sectores</h2>
+          <hr class="light">
+          <p class="text-faded">Ayudamos a peque&ntilde;os negocios orientados al cliente final</p>
+        </div>
+      </div>
+      <div class="row" style="margin-top:40px;">
+        <div class="col-md-3 col-sm-4 col-xs-6 text-center sector-box wow" data-wow-delay="0s">
+          <i class="fa fa-cutlery sector-icon"></i>
+          <h4>Restaurantes</h4>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-6 text-center sector-box wow" data-wow-delay=".1s">
+          <i class="fa fa-coffee sector-icon"></i>
+          <h4>Cafeter&iacute;as</h4>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-6 text-center sector-box wow" data-wow-delay=".2s">
+          <i class="fa fa-scissors sector-icon"></i>
+          <h4>Peluquer&iacute;as</h4>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-6 text-center sector-box wow" data-wow-delay=".3s">
+          <i class="fa fa-heartbeat sector-icon"></i>
+          <h4>Cl&iacute;nicas</h4>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-6 text-center sector-box wow" data-wow-delay=".4s">
+          <i class="fa fa-graduation-cap sector-icon"></i>
+          <h4>Academias</h4>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-6 text-center sector-box wow" data-wow-delay=".5s">
+          <i class="fa fa-diamond sector-icon"></i>
+          <h4>Centros est&eacute;tica</h4>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-6 text-center sector-box wow" data-wow-delay=".6s">
+          <i class="fa fa-shopping-cart sector-icon"></i>
+          <h4>Comercios</h4>
+        </div>
+        <div class="col-md-3 col-sm-4 col-xs-6 text-center sector-box wow" data-wow-delay=".7s">
+          <i class="fa fa-wrench sector-icon"></i>
+          <h4>Talleres</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <aside class="bg-primary">
+    <div class="container text-center">
+      <div class="call-to-action">
+        <h2 style="color:white;">Transforma la tecnolog&iacute;a de tu negocio</h2>
+        <p class="text-faded" style="font-size:18px;margin-bottom:30px;">Empieza con un m&oacute;dulo y ampl&iacute;alo cuando quieras.&nbsp; Sin compromiso.</p>
+        <a href="#contacto" class="btn btn-default btn-xl">Habla con nosotros</a>
+      </div>
+    </div>
+  </aside>
+
+  <section id="contacto">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 text-center">
+          <h2 class="section-heading">Hablemos</h2>
+          <hr class="primary">
+          <p>&iquest;Te gustar&iacute;a tener un &uacute;nico partner que se encargue de toda tu tecnolog&iacute;a?&nbsp; Cu&eacute;ntanos qu&eacute; necesitas y te contamos c&oacute;mo podemos ayudarte.</p>
+        </div>
+        <div class="col-lg-3 col-lg-offset-2 text-center">
+          <a href="https://github.com/sihd-es">
+            <i class="fa fa-github fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+            <p style="margin-top:10px;">sihd-es</p>
+          </a>
+        </div>
+        <div class="col-lg-2 text-center">
+          <a href="mailto:hola@sihd.es">
+            <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+            <p style="margin-top:10px;">hola@sihd.es</p>
+          </a>
+        </div>
+        <div class="col-lg-2 text-center">
+          <a href="https://sihd.es">
+            <i class="fa fa-globe fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+            <p style="margin-top:10px;">sihd.es</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function() {
+      var nav = document.getElementById('mainNav');
+      var toggle = document.getElementById('nav-toggle');
+      var collapse = document.getElementById('navbar-collapse');
+      var sections = document.querySelectorAll('section, header');
+      var navLinks = document.querySelectorAll('.navbar-nav a');
+      var wowEls = document.querySelectorAll('.wow');
+
+      toggle.addEventListener('click', function() {
+        collapse.classList.toggle('in');
+        toggle.classList.toggle('collapsed');
+        toggle.setAttribute('aria-expanded', collapse.classList.contains('in'));
+      });
+
+      navLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          collapse.classList.remove('in');
+          toggle.classList.add('collapsed');
+          toggle.setAttribute('aria-expanded', 'false');
+          var target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            window.scrollBy(0, -50);
+          }
+        });
+      });
+
+      observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.target.id === 'page-top' || entry.target.tagName === 'HEADER') {
+            nav.classList.toggle('navbar-shrink', !entry.isIntersecting);
+          }
+          var id = entry.target.id;
+          navLinks.forEach(function(link) {
+            link.parentElement.classList.toggle('active', link.getAttribute('href') === '#' + id && entry.isIntersecting);
+          });
+        });
+      }, { rootMargin: '-51px 0px 0px 0px' });
+
+      sections.forEach(function(s) { observer.observe(s); });
+
+      var wowObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var delay = entry.target.getAttribute('data-wow-delay') || '0s';
+            entry.target.style.animationDelay = delay;
+            entry.target.classList.add('animated', 'bounceIn');
+            wowObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      wowEls.forEach(function(el) { wowObserver.observe(el); });
+    })();
+  </script>
+</body>
+</html>
