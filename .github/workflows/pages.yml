@@ -23,9 +23,11 @@ jobs:
 
       - run: |
           mkdir _public
-          cp index.html _public/index.html
-          cp -r assets _public/assets
-          cp -r bundled _public/bundled
+          rsync -av \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='README.md' \
+            ./ _public/
 
       - uses: actions/upload-pages-artifact@v3
         with:
