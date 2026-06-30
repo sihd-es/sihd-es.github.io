@@ -13,15 +13,3 @@ Landing estática para GitHub Pages.
 ## Publicación
 
 Subir todos los archivos a la raíz del repositorio `sihd-es.github.io`.
-
-
-## Legal pages
-
-Las páginas legales están en `/legal/`:
-
-- `/legal/privacy-policy.html`
-- `/legal/terms.html`
-- `/legal/cookies.html`
-- `/legal/ai-policy.html`
-
-El footer de `index.html` apunta a estas URLs.
