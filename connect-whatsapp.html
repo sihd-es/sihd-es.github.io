@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conectar WhatsApp Business | SiHD</title>
+  <meta name="description" content="Conecta tu cuenta de WhatsApp Business con SiHD AI." />
+  <style>
+    :root{--primary:#1d4ed8;--primary-dark:#0f2f6e;--primary-deep:#081a3a;--primary-light:#60a5fa;--bg:#f8fafc;--surface:#fff;--text:#0f172a;--text-soft:#475569;--border:#e2e8f0;--success:#16a34a;--error:#dc2626;--radius:22px}*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--text);background:radial-gradient(circle at top right,rgba(96,165,250,.22),transparent 32%),linear-gradient(180deg,#fff 0%,var(--bg) 100%);min-height:100vh}.container{max-width:980px;margin:0 auto;padding:32px 20px 60px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:56px}.brand{display:flex;align-items:center;gap:12px;font-weight:900;color:var(--primary-dark);text-decoration:none}.brand-mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--primary-deep),var(--primary-dark));color:white;display:flex;align-items:center;justify-content:center;font-weight:900;letter-spacing:-.06em}.home-link{color:var(--primary);font-weight:800;text-decoration:none}.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start}.card{background:rgba(255,255,255,.92);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 24px 70px rgba(15,47,110,.12);padding:34px}.eyebrow{margin:0 0 12px;font-size:13px;font-weight:900;color:var(--primary);text-transform:uppercase;letter-spacing:.14em}h1{margin:0 0 18px;color:var(--primary-deep);font-size:clamp(36px,5vw,56px);line-height:1;letter-spacing:-.05em}h2{color:var(--primary-dark)}p{color:var(--text-soft);line-height:1.7}.lead{font-size:19px;margin-bottom:28px}.btn{appearance:none;border:0;border-radius:14px;background:linear-gradient(135deg,var(--primary),#0b63f6);color:white;font-weight:900;padding:15px 22px;cursor:pointer;box-shadow:0 18px 36px rgba(29,78,216,.25);transition:.22s ease;font-size:16px}.btn:hover{transform:translateY(-2px);box-shadow:0 24px 48px rgba(29,78,216,.32)}.secondary{background:white;color:var(--primary-dark);border:1px solid var(--border);box-shadow:none}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}.steps{display:grid;gap:14px;margin-top:22px}.step{display:flex;gap:12px;align-items:flex-start;padding:16px;border:1px solid var(--border);border-radius:16px;background:#fff}.step-number{width:28px;height:28px;border-radius:999px;background:#eff6ff;color:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:900;flex:0 0 auto}.step strong{display:block;color:var(--primary-deep);margin-bottom:2px}.step span{color:var(--text-soft);font-size:14px}.status{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border-radius:999px;background:#fff7ed;color:#9a3412;font-weight:800;font-size:13px;margin-bottom:18px;border:1px solid #fed7aa}.status.ok{background:#ecfdf5;color:#166534;border-color:#bbf7d0}.status.error{background:#fef2f2;color:#991b1b;border-color:#fecaca}.result{margin-top:20px;display:none}.result.visible{display:block}pre{white-space:pre-wrap;word-break:break-word;background:#06152f;color:#dbeafe;padding:18px;border-radius:16px;overflow:auto;font-size:13px;line-height:1.55}.small{font-size:13px;color:#64748b}.warning{background:#fffbeb;border:1px solid #fde68a;color:#92400e;padding:14px 16px;border-radius:14px;margin-top:18px;font-size:14px;line-height:1.6}footer{margin-top:44px;text-align:center;color:#64748b;font-size:14px}footer a{color:var(--primary);font-weight:800;text-decoration:none;margin:0 8px}@media(max-width:850px){.hero{grid-template-columns:1fr}.topbar{margin-bottom:30px}.card{padding:24px}}
+  </style>
+</head>
+<body>
+  <div id="fb-root"></div>
+  <div class="container">
+    <header class="topbar">
+      <a class="brand" href="/"><span class="brand-mark">SiHD</span><span>SiHD AI</span></a>
+      <a class="home-link" href="/">Volver a sihd.es</a>
+    </header>
+    <main class="hero">
+      <section class="card">
+        <p class="eyebrow">Embedded Signup</p>
+        <h1>Conecta WhatsApp Business con SiHD AI.</h1>
+        <p class="lead">Esta página inicia el flujo oficial de Meta para conectar una cuenta de WhatsApp Business con la plataforma SiHD AI.</p>
+        <div id="status" class="status">Esperando conexión</div>
+        <div class="actions">
+          <button class="btn" onclick="launchWhatsAppSignup()">Conectar WhatsApp Business</button>
+          <button class="btn secondary" onclick="clearResult()">Limpiar resultado</button>
+        </div>
+        <div class="warning">Esta versión es para pruebas. El <strong>code</strong> devuelto por Meta debe enviarse al backend de SiHD para intercambiarlo por un access token. No guardes tokens en HTML ni en GitHub Pages.</div>
+        <div id="result" class="result">
+          <h2>Resultado del flujo</h2>
+          <p class="small">Datos recibidos desde Meta. Cuando el backend esté listo, estos datos se enviarán por API.</p>
+          <pre id="resultJson">{}</pre>
+        </div>
+      </section>
+      <aside class="card">
+        <h2>Qué ocurre aquí</h2>
+        <div class="steps">
+          <div class="step"><span class="step-number">1</span><div><strong>Login con Meta</strong><span>El negocio autoriza a SiHD AI para acceder a su WhatsApp Business.</span></div></div>
+          <div class="step"><span class="step-number">2</span><div><strong>Selección del WABA y número</strong><span>Meta devuelve el identificador del WABA y del número conectado.</span></div></div>
+          <div class="step"><span class="step-number">3</span><div><strong>Code temporal</strong><span>El navegador recibe un code que el backend debe intercambiar por un token.</span></div></div>
+          <div class="step"><span class="step-number">4</span><div><strong>Activación en SiHD</strong><span>El backend guardará la conexión y activará el agente IA del cliente.</span></div></div>
+        </div>
+      </aside>
+    </main>
+    <footer>
+      <a href="/legal/privacy-policy.html">Privacidad</a>
+      <a href="/legal/terms.html">Términos</a>
+      <a href="/legal/cookies.html">Cookies</a>
+      <a href="/legal/ai-policy.html">Uso de IA</a>
+      <p>© 2026 SiHD – El Partner Digital para Pequeñas Empresas.</p>
+    </footer>
+  </div>
+  <script>
+    const SIHD_META_APP_ID = "1518045219224457";
+    const SIHD_EMBEDDED_SIGNUP_CONFIG_ID = "1489878055735446";
+    const SIHD_BACKEND_CALLBACK_URL = ""; // Ejemplo: "https://api.sihd.es/api/v1/whatsapp/embedded-signup/callback"
+    window.fbAsyncInit = function() { FB.init({ appId: SIHD_META_APP_ID, autoLogAppEvents: true, xfbml: true, version: "v25.0" }); };
+    (function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.async = true; js.defer = true; js.crossOrigin = "anonymous"; js.src = "https://connect.facebook.net/en_US/sdk.js"; fjs.parentNode.insertBefore(js, fjs); }(document, "script", "facebook-jssdk"));
+    let embeddedSignupSessionInfo = null;
+    window.addEventListener("message", (event) => { if (event.origin !== "https://www.facebook.com" && event.origin !== "https://web.facebook.com") return; try { const data = JSON.parse(event.data); if (data.type === "WA_EMBEDDED_SIGNUP") { embeddedSignupSessionInfo = data; showResult({ event: "WA_EMBEDDED_SIGNUP", sessionInfo: data }); } } catch (error) {} });
+    function fbLoginCallback(response) { const payload = { event: "FB_LOGIN_CALLBACK", authResponse: response && response.authResponse ? { code: response.authResponse.code, userID: response.authResponse.userID, expiresIn: response.authResponse.expiresIn } : null, status: response ? response.status : null, sessionInfo: embeddedSignupSessionInfo }; showResult(payload); if (response && response.authResponse && response.authResponse.code) { setStatus("Conexión completada. Code recibido.", "ok"); if (SIHD_BACKEND_CALLBACK_URL) sendToBackend(payload); } else { setStatus("El flujo terminó sin devolver code.", "error"); } }
+    function launchWhatsAppSignup() { setStatus("Abriendo Embedded Signup...", ""); FB.login(fbLoginCallback, { config_id: SIHD_EMBEDDED_SIGNUP_CONFIG_ID, response_type: "code", override_default_response_type: true, extras: { version: "v4", setup: { business: { id: null, name: null, email: null, phone: { code: "34", number: null }, website: "https://sihd.es" } } } }); }
+    async function sendToBackend(payload) { try { const response = await fetch(SIHD_BACKEND_CALLBACK_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }); const backendResult = await response.json().catch(() => null); showResult({ sentToBackend: true, backendStatus: response.status, backendResult, originalPayload: payload }); setStatus(response.ok ? "Conexión enviada al backend correctamente." : "El backend respondió con error.", response.ok ? "ok" : "error"); } catch (error) { showResult({ sentToBackend: false, error: error.message, originalPayload: payload }); setStatus("No se pudo enviar al backend.", "error"); } }
+    function showResult(data) { document.getElementById("result").classList.add("visible"); document.getElementById("resultJson").textContent = JSON.stringify(data, null, 2); console.log("SiHD Embedded Signup result:", data); }
+    function clearResult() { embeddedSignupSessionInfo = null; document.getElementById("result").classList.remove("visible"); document.getElementById("resultJson").textContent = "{}"; setStatus("Esperando conexión", ""); }
+    function setStatus(message, type) { const status = document.getElementById("status"); status.textContent = message; status.className = "status"; if (type === "ok") status.classList.add("ok"); if (type === "error") status.classList.add("error"); }
+  </script>
+</body>
+</html>
