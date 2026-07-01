@@ -35,6 +35,11 @@
           <button class="btn" onclick="launchWhatsAppSignup()">Conectar WhatsApp Business</button>
           <button class="btn secondary" onclick="clearResult()">Limpiar resultado</button>
         </div>
+        <div id="result" class="result">
+          <h2>Resultado del flujo</h2>
+          <p class="small">Datos recibidos desde Meta.</p>
+          <pre id="resultJson">{}</pre>
+        </div>
       </section>
       <aside class="card">
         <h2>Qué ocurre aquí</h2>
@@ -63,7 +68,19 @@
     let embeddedSignupSessionInfo = null;
     window.addEventListener("message", (event) => { if (event.origin !== "https://www.facebook.com" && event.origin !== "https://web.facebook.com") return; try { const data = JSON.parse(event.data); if (data.type === "WA_EMBEDDED_SIGNUP") { embeddedSignupSessionInfo = data; showResult({ event: "WA_EMBEDDED_SIGNUP", sessionInfo: data }); } } catch (error) {} });
     function fbLoginCallback(response) { const payload = { event: "FB_LOGIN_CALLBACK", authResponse: response && response.authResponse ? { code: response.authResponse.code, userID: response.authResponse.userID, expiresIn: response.authResponse.expiresIn } : null, status: response ? response.status : null, sessionInfo: embeddedSignupSessionInfo }; showResult(payload); if (response && response.authResponse && response.authResponse.code) { setStatus("Conexión completada. Code recibido.", "ok"); if (SIHD_BACKEND_CALLBACK_URL) sendToBackend(payload); } else { setStatus("El flujo terminó sin devolver code.", "error"); } }
-    function launchWhatsAppSignup() { setStatus("Abriendo Embedded Signup...", ""); FB.login(fbLoginCallback, { config_id: SIHD_EMBEDDED_SIGNUP_CONFIG_ID, response_type: "code", override_default_response_type: true, extras: { version: "v4", setup: { business: { id: null, name: null, email: null, phone: { code: "34", number: null }, website: "https://sihd.es" } } } }); }
+    //function launchWhatsAppSignup() { setStatus("Abriendo Embedded Signup...", ""); FB.login(fbLoginCallback, { config_id: SIHD_EMBEDDED_SIGNUP_CONFIG_ID, response_type: "code", override_default_response_type: true, extras: { version: "v4", setup: { business: { id: null, name: null, email: null, phone: { code: "34", number: null }, website: "https://sihd.es" } } } }); }
+    function launchWhatsAppSignup() {
+  setStatus("Abriendo Embedded Signup...", "");
+
+  FB.login(fbLoginCallback, {
+    config_id: SIHD_EMBEDDED_SIGNUP_CONFIG_ID,
+    response_type: "code",
+    override_default_response_type: true,
+    extras: {
+      version: "v4"
+    }
+  });
+}
     //async function sendToBackend(payload) { try { const response = await fetch(SIHD_BACKEND_CALLBACK_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }); const backendResult = await response.json().catch(() => null); showResult({ sentToBackend: true, backendStatus: response.status, backendResult, originalPayload: payload }); setStatus(response.ok ? "Conexión enviada al backend correctamente." : "El backend respondió con error.", response.ok ? "ok" : "error"); } catch (error) { showResult({ sentToBackend: false, error: error.message, originalPayload: payload }); setStatus("No se pudo enviar al backend.", "error"); } }
     async function sendToBackend(payload) {
   try {
